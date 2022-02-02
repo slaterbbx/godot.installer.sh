@@ -7,6 +7,9 @@
 # Fix download link to check github downloads instead of the website for release numbers
 # uninstall process 
 
+# change downloader to get from github repos
+# make option to right click desktop icon and have options to open source folder
+
 linebreak="echo "
 
 # Install Godat game engine &&& Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg
