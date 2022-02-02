@@ -101,7 +101,7 @@ Icon=/home/${userName}/.devel.apps/godot/logo.svg
 Exec=/home/${userName}/.devel.apps/godot/${unzippedFilename}
 Categories=Game Development
 Name[en_US]=Godot
-Name=Godot" | cat > ~/.local/share/Godot.desktop
+Name=Godot" | cat > ~/.local/share/Godot.desktop # ‼❗ do this process in another folder to check if the icon is locked, if we can use another folder and move it from the ./tempfiles, that would be better. / also, maybe we dont need to do anything accept change the user and permissions anyway.
 # we need to change the owner to the current user to eliminate "lock" icon for root
 chown $userName ~/.local/share/Godot.desktop
 # we build the file in the ~/.local/ folder and move it to the desktop to eliminate .desktop extension visability
