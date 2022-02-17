@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # will finish todayish
-#FU GIT
 
 
 # GH_USER=godotengine \
