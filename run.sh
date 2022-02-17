@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# will finish todayish
-
 
 # GH_USER=godotengine \
 # GH_REPO=godot \
