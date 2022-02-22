@@ -11,7 +11,7 @@
 # make option to right click desktop icon and have options to open source folder
 
 # make option to install godot_voxel map generator tool https://github.com/Zylann/godot_voxel
-# make option to install Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg
+# make option to install Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg and or Material maker for godot
 
 
 linebreak="echo "
