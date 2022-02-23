@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# NEEDS!
+# Add some of the following
 # Menu link with catagory Game Dev
 # Make godot command to open godot from terminal
 # Make install for source
@@ -32,11 +32,11 @@ scrapeLink="https://godotengine.org/download/linux"
 linkRegex1='downloads\.tuxfamily.*(64|32)'
 excludeSearch1='mono'
 
+mkdir ./tempfiles
+temp="./tempfiles"
+
 # save HTML data to temp file for link scraping
 htmlToScrape="./tempfiles/scraper.html"
-
-mkdir ./tempfiles
-temp="./tempfiles/"
 
 # download html page with curl and save to tempfile for parsing
 curl -s $scrapeLink > $htmlToScrape
@@ -46,10 +46,10 @@ curl -s $scrapeLink > $htmlToScrape
 grep -i -E $linkRegex1 $htmlToScrape | 
 grep -i -o '".*"' | # displays only text within "" due to -o option with grep
 grep -v $excludeSearch1 | # exclude from search by flipping the results
-sed 's/"//g' > ${temp}godotlinks.txt # removes quotes from link 
+sed 's/"//g' > ${temp}/godotlinks.txt # removes quotes from link 
 
 # downloading files
-(cd ./tempfiles;
+(cd ${temp};
 	# download the logo svg file into ./tempfiles
 	curl -LOs https://godotengine.org/themes/godotengine/assets/press/icon_color_outline.svg
 
@@ -75,12 +75,11 @@ if ! test -f "$zipValidator"; then
 fi
 )
 
+installDirectory="Godot"
+
 # create install folder
 (cd /home/${userName}/;
-	mkdir .devel.apps
-	(cd .devel.apps;
-		mkdir godot
-	)
+	mkdir ${installDirectory}
 )
 
 # get unzipped filename from zip file
@@ -89,9 +88,9 @@ sed 's/tempfiles//g' |
 sed 's/[/]//' |
 sed 's/.zip//')
 
-# move godot game engine and svg file into the /home/username/.devel.apps/godot folder
-mv ./tempfiles/$unzippedFilename /home/${userName}/.devel.apps/godot
-mv ./tempfiles/icon_color_outline.svg /home/${userName}/.devel.apps/godot/logo.svg
+# move godot game engine and svg file into the /home/${username}/${installDirectory}folder
+mv ./tempfiles/$unzippedFilename /home/${userName}/${installDirectory}
+mv ./tempfiles/icon_color_outline.svg /home/${userName}/${installDirectory}/logo.svg
 
 # create desktop icon
 # printf gives us /n newlines which are needed for the .desktop file
@@ -101,21 +100,18 @@ printf "#!/usr/bin/env xdg-open
 Type=Application
 Terminal=false
 StartupNotify=false
-Icon=/home/${userName}/.devel.apps/godot/logo.svg
-Exec=/home/${userName}/.devel.apps/godot/${unzippedFilename}
+Icon=/home/${userName}/${installDirectory}/logo.svg
+Exec=/home/${userName}/${installDirectory}/${unzippedFilename}
 Categories=Game Development
 Name[en_US]=Godot
-Name=Godot" | cat > ~/.local/share/Godot.desktop # ‼❗ do this process in another folder to check if the icon is locked, if we can use another folder and move it from the ./tempfiles, that would be better. / also, maybe we dont need to do anything accept change the user and permissions anyway.
-# we need to change the owner to the current user to eliminate "lock" icon for root
-chown $userName ~/.local/share/Godot.desktop
-# we build the file in the ~/.local/ folder and move it to the desktop to eliminate .desktop extension visability
-mv ~/.local/share/Godot.desktop /home/slaterbbx/Desktop/
+Name=Godot" | cat > ~/Desktop/Godot.desktop
 # set as executable just incase linux system compatability
-chmod +x /home/slaterbbx/Desktop/Godot.desktop
+# chmod +x /home/${userName}/Desktop/Godot.desktop
 echo "  • Desktop shortcut created "
 
 rm -rf ./tempfiles
 
 # UNINSTALL PROCESS
 # remove folder to clean up
+# remove folder ${installDirectory}
 # ~/.local/share/godot
