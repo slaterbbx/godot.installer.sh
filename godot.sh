@@ -32,11 +32,11 @@ scrapeLink="https://godotengine.org/download/linux"
 linkRegex1='downloads\.tuxfamily.*(64|32)'
 excludeSearch1='mono'
 
-mkdir ./tempfiles
-temp="./tempfiles"
+temp="tempfiles"
+mkdir "${temp}"
 
 # save HTML data to temp file for link scraping
-htmlToScrape="./tempfiles/scraper.html"
+htmlToScrape="./${temp}/scraper.html"
 
 # download html page with curl and save to tempfile for parsing
 curl -s $scrapeLink > $htmlToScrape
@@ -46,10 +46,10 @@ curl -s $scrapeLink > $htmlToScrape
 grep -i -E $linkRegex1 $htmlToScrape | 
 grep -i -o '".*"' | # displays only text within "" due to -o option with grep
 grep -v $excludeSearch1 | # exclude from search by flipping the results
-sed 's/"//g' > ${temp}/godotlinks.txt # removes quotes from link 
+sed 's/"//g' > ./${temp}/godotlinks.txt # removes quotes from link 
 
 # downloading files
-(cd ${temp};
+(cd ./${temp};
 	# download the logo svg file into ./tempfiles
 	curl -LOs https://godotengine.org/themes/godotengine/assets/press/icon_color_outline.svg
 
@@ -89,8 +89,8 @@ sed 's/[/]//' |
 sed 's/.zip//')
 
 # move godot game engine and svg file into the /home/${username}/${installDirectory}folder
-mv ./tempfiles/$unzippedFilename /home/${userName}/${installDirectory}
-mv ./tempfiles/icon_color_outline.svg /home/${userName}/${installDirectory}/logo.svg
+mv ./${temp}/$unzippedFilename /home/${userName}/${installDirectory}
+mv ./${temp}/icon_color_outline.svg /home/${userName}/${installDirectory}/logo.svg
 
 # create desktop icon
 # printf gives us /n newlines which are needed for the .desktop file
@@ -109,7 +109,7 @@ Name=Godot" | cat > ~/Desktop/Godot.desktop
 # chmod +x /home/${userName}/Desktop/Godot.desktop
 echo "  • Desktop shortcut created "
 
-rm -rf ./tempfiles
+rm -rf ./${temp}
 
 # UNINSTALL PROCESS
 # remove folder to clean up
