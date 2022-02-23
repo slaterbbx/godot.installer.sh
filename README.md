@@ -9,6 +9,6 @@
 
 #### Run installer from terminal
 requires curl
-'''
+```
 curl -o- https://github.com/slaterbbx/godot.installer.sh/blob/master/godot.sh | bash
-'''
+```
