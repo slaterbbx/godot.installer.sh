@@ -1,17 +1,16 @@
 #!/bin/bash
 
+# If you want to help add something to this, here are my current thoughts
 # Add some of the following
-# Menu link with catagory Game Dev
 # Make godot command to open godot from terminal
+# - add options to pick version of godot + source
 # Make install for source
-# Fix download link to check github downloads instead of the website for release numbers
+# - add right click option on desktop icon "view source" link to folder in terminal
 # uninstall process 
-
 # change downloader to get from github repos
-# make option to right click desktop icon and have options to open source folder
-
-# make option to install godot_voxel map generator tool https://github.com/Zylann/godot_voxel
-# make option to install Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg and or Material maker for godot
+# make options to install popular plugins with godot like
+# - godot_voxel map generator tool https://github.com/Zylann/godot_voxel
+# - Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg and or Material maker for godot
 
 
 linebreak="echo "
