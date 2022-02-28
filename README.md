@@ -10,6 +10,10 @@ requires curl
 ```
 sudo apt install curl
 ```
+reguires git
+```
+sudo apt install git
+```
 ```
 git clone https://github.com/slaterbbx/godot.installer.sh
 cd godot.installer.sh
