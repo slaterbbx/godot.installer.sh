@@ -8,6 +8,9 @@
 #### Run installer from terminal
 requires curl
 ```
+sudo apt install curl
+```
+```
 git clone https://github.com/slaterbbx/godot.installer.sh
 cd godot.installer.sh
 bash godot.sh
