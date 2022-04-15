@@ -5,14 +5,14 @@
 - Creates desktop shortcut ( may require you to activate it / permissions )
 - Installs into Godot folder on the user home folder
 - Can be used to update to the latest version of Godot ( keeps old versions )
-- Should work in most if not all versions of linux
+- Should work in all linux platforms with changes to package manager "apt" in this case for ubuntu
 
 #### Run installer from terminal
-Requires curl
+Requires curl ( ubuntu )
 ```
 sudo apt install curl
 ```
-Reguires git
+Reguires git ( ubuntu )
 ```
 sudo apt install git
 ```
