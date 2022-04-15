@@ -7,7 +7,7 @@
 # Make install for source
 # - add right click option on desktop icon "view source" link to folder in terminal
 # uninstall process 
-# change downloader to get from github repos
+# add downloader to get from github repos "release" / if website down ( for download ticker?.. )
 # make options to install popular plugins with godot like
 # - godot_voxel map generator tool https://github.com/Zylann/godot_voxel
 # - Vpainter https://www.youtube.com/watch?v=vVxemrkB3Mg and or Material maker for godot
